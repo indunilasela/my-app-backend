@@ -1,10 +1,8 @@
 // const express = require('express');
 import express from 'express';
-import dotenv from 'dotenv';
-import { sql } from './src/config/db.js'; // Adjust the import path as necessary
-import rateLimiter from './src/middleware/rateLimiter.js';
-import transactionsRoute from './src/routes/transactionsRoute.js'; 
-import { connectToDatabase } from './src/config/db.js'; // Adjust the import path as necessary
+import rateLimiter from './middleware/rateLimiter.js';
+import transactionsRoute from './routes/transactionsRoute.js'; 
+import { connectToDatabase } from './config/db.js'; // Adjust the import path as necessary
 const app = express();
 
 

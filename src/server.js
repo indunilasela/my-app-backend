@@ -8,11 +8,11 @@ const app = express();
 
 // Middleware 
 app.use(express.json()); 
-app.use(rateLimiter); // Apply rate limiting middleware
+// app.use(rateLimiter); // Apply rate limiting middleware - DISABLED due to Upstash permissions
 
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 
 

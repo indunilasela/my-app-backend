@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { connectToDatabase } from "./config/db.js";
 import rateLimiter from "./middleware/rateLimiter.js";
+import cors from "cors";
 
 import transactionsRoute from "./routes/transactionsRoute.js";
 import job from "./config/cron.js";
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV === "production") job.start();
 // middleware
 // app.use(rateLimiter); // Disabled due to Upstash permissions issue
 app.use(express.json());
+app.use(cors());
 
 // our custom simple middleware
 // app.use((req, res, next) => {
@@ -33,5 +35,6 @@ app.use("/api/transactions", transactionsRoute);
 connectToDatabase().then(() => {
   app.listen(PORT, () => {
     console.log("Server is up and running on PORT:", PORT);
+    console.log(`http://localhost:5001/api/transactions/...`);
   });
 });
